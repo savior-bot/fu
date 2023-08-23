@@ -1,22 +1,30 @@
 {
     "manifest_version": 3,
-    "name": "Fusy Focus",
-    "description": "A better approach to productive web browsing",
+    "name": "YouTube Content Filter",
     "version": "1.0",
+    "description": "Filter YouTube content for a distraction-free experience",
+    "permissions": ["activeTab", "storage", "https://www.googleapis.com/"],
+    "background": {
+      "service_worker": "background.js"
+    },
     "action": {
-        "default_popup": "popup/popup.html"
+      "default_popup": "popup/popup.html",
+      "default_icon": {
+        "16": "images/icon-16.png",
+        "48": "images/icon-32.png",
+        "128": "images/icon-128.png"
+      }
     },
     "icons": {
-        "16" : "images/icon-16.png",
-        "32" : "images/icon-32.png",    
-        "96" : "images/icon-96.png",
-        "128" : "images/icon-128.png"
+      "16": "images/icon-16.png",
+      "48": "images/icon-32.png",
+      "128": "images/icon-128.png"
     },
-    "background" : {
-        "background_worker" : "background.js",
-        "type" : "module"
-    },
-    "permissions" : [
-        "storage"
+    "content_scripts": [
+      {
+        "matches": ["*://www.youtube.com/*"],
+        "js": ["content.js"]
+      }
     ]
-}
+  }
+  
