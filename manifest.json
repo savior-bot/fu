@@ -3,9 +3,10 @@
     "name": "YouTube Content Filter",
     "version": "1.0",
     "description": "Filter YouTube content for a distraction-free experience",
-    "permissions": ["activeTab", "storage", "https://www.googleapis.com/"],
+    "permissions": ["storage"],
     "background": {
-      "service_worker": "background.js"
+      "service_worker": "Background.js",
+      "type": "module"
     },
     "action": {
       "default_popup": "popup/popup.html",
@@ -19,12 +20,6 @@
       "16": "images/icon-16.png",
       "48": "images/icon-32.png",
       "128": "images/icon-128.png"
-    },
-    "content_scripts": [
-      {
-        "matches": ["*://www.youtube.com/*"],
-        "js": ["content.js"]
-      }
-    ]
-  }
+    }
+}
   
